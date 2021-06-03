@@ -6,7 +6,7 @@ const prisma = new PrismaClient()
 const init = async () => {
     const server: Server = new Server({
         port: process.env.PORT ?? 3000,
-        host: 'localhost'
+        host: '0.0.0.0'
     })
     routeInit(server, prisma)
     await server.start()

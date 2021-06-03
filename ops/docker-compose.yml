@@ -2,11 +2,19 @@ version: '3'
 services:
   database:
     image: "postgres"
+    container_name: db_test
     env_file:
       - database.env
     volumes:
       - database-data:/var/lib/postgresql/data/
     ports:
       - 5432:5432
+  api:
+    image: test:latest
+    container_name: api_test
+    depends_on:
+      - database
+    ports:
+      - 3000:3000
 volumes:
   database-data:
