@@ -8,6 +8,8 @@ const init = async () => {
         port: process.env.PORT ?? 3000,
         host: '0.0.0.0'
     })
+    prisma.$connect()
+    console.log(prisma)
     routeInit(server, prisma)
     await server.start()
     console.log('Server running on %s', server.info.uri)
